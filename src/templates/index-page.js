@@ -17,6 +17,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  foo
 }) => {
   const heroImage = getImage(image) || image;
 
@@ -31,7 +32,7 @@ export const IndexPageTemplate = ({
                 <div className="content">
                   <div className="content">
                     <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
+                      <h1 className="title">{mainpitch.title} {foo}</h1>
                     </div>
                     <div className="tile">
                       <h3 className="subtitle">{mainpitch.description}</h3>
@@ -84,6 +85,7 @@ IndexPageTemplate.propTypes = {
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
+  foo: PropTypes.string,
 };
 
 const IndexPage = ({ data }) => {
@@ -99,6 +101,7 @@ const IndexPage = ({ data }) => {
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        foo={frontmatter.foo}
       />
     </Layout>
   );
@@ -143,6 +146,7 @@ export const pageQuery = graphql`
           heading
           description
         }
+        foo
       }
     }
   }
